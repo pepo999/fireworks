@@ -104,7 +104,7 @@ class Firework {
         this.alpha -= 0.0005;
         this.x += (Math.random() - Math.random())/2;
         this.y -= this.speed * 20;
-        return xplosionX, xplosionY;
+
     }
 
 

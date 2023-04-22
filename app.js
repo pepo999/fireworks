@@ -1,25 +1,25 @@
 const myCanvas = document.getElementById('my-canvas');
 const ctx = myCanvas.getContext('2d');
 
-let fireworksArr = []
-let xplosionX = 0;
-let xplosionY = 0;
+let fireworksArr = [];
+let fireworksArr2 = [];
+
 const originFirework = Firework.generateRandomStart(myCanvas.width, myCanvas.height);
-console.log(originFirework)
+// console.log(originFirework)
 
 function start() {
     setInterval(() => {
         originFirework.draw(ctx)
         originFirework.changePositionStart();
-    
-        let xplosionX = originFirework.x;
-        let xplosionY = originFirework.y;
         // console.log(originFirework.changePositionStart(), xplosionX)
         if (originFirework.y <= originFirework.heightOfExplosion) {
-            explosion();
+            explosion(fireworksArr);
+            setTimeout(() => {
+                explosion(fireworksArr2);
+            }, 10);
             originFirework.color = 'black';
+           
         }
-        
     }, 10);
 
 }
@@ -28,32 +28,31 @@ start()
 
 let darkenUnit = 0.06;
 
-for (let i = 0; i <100 + (Math.random()*700); i++) {
+for (let i = 0; i < 100 + (Math.random() * 700); i++) {
     const newFirework = Firework.generateRandom(myCanvas.width, myCanvas.height, originFirework.heightOfExplosion, originFirework.color);
     fireworksArr.push(newFirework);
-    const heightOfExplosion = newFirework.heightOfExplosion;
-    console.log(heightOfExplosion)
 }
 
-function explosion() {
+for (let i = 0; i < 100 + (Math.random() * 900); i++) {
+    const newFirework = Firework.generateRandom(myCanvas.width, myCanvas.height, originFirework.heightOfExplosion, originFirework.color);
+    fireworksArr2.push(newFirework);
+}
+
+
+function explosion(arr) {
     setInterval(() => {
-        for (let i = 0; i < fireworksArr.length; i++) {
-            const firework = fireworksArr[i];
+        for (let i = 0; i < arr.length; i++) {
+            const firework = arr[i];
             firework.drawXplosion(ctx);
             firework.changePosition();
-        //    firework.speed -= (firework.speed / (2000 + (Math.random() * 1000)));
+            //    firework.speed -= (firework.speed / (2000 + (Math.random() * 1000)));
             if (ctx.globalAlpha < 0.05 * Math.random() || firework.alpha <= 0.1) {
-            //     ctx.globalAlpha = 1;
-            //     darkenUnit = darkenUnit + 0.00001;
-            ctx.fillStyle = 'black';
-            ctx.fillRect(0,0,myCanvas.width, myCanvas.height)
+                ctx.fillStyle = 'black';
+                ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
                 return;
             }
-            
-                ctx.globalAlpha = 1;
-                darkenUnit = darkenUnit + 0.00008;
-            
-           
+            ctx.globalAlpha = 1;
+            darkenUnit = darkenUnit + 0.00008;
         }
     }, 10);
     darkenUnit = 0.06;
@@ -65,9 +64,6 @@ function darken1() {
         ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
     }, 10);
 }
-
-// explosion()
-
 
 function darken() {
     ctx.fillStyle = `rgba(0, 0, 0, ${darkenUnit})`;
