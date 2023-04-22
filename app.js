@@ -49,10 +49,8 @@ function explosion(arr) {
             // firework.direction -= (Math.random() - Math.random()) / 5000;
             //    firework.speed -= (firework.speed / (2000 + (Math.random() * 1000)));
             if (ctx.globalAlpha < 0.05 * Math.random() || firework.alpha <= 0.4) {
-                setInterval(() => {
-                    ctx.fillStyle = 'rgba(0, 0, 0, 0.01)';
+                ctx.fillStyle = "rgba(0, 0, 0, 1)";
                 ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
-                }, 10);
             }
             ctx.globalAlpha = 1;
             darkenUnit = darkenUnit + 0.00008;
@@ -61,15 +59,15 @@ function explosion(arr) {
     darkenUnit = 0.06;
 }
 
-function darken1() {
-    setInterval(() => {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
-        ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
-    }, 10);
-}
+// function darken1() {
+//     setInterval(() => {
+//         ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
+//         ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
+//     }, 10);
+// }
 
 function darken() {
-    ctx.fillStyle = `rgba(0, 0, 0, ${darkenUnit * 2})`;
+    ctx.fillStyle = `rgba(0, 0, 0, ${darkenUnit * 1})`;
     ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
     window.requestAnimationFrame(darken);
 }
