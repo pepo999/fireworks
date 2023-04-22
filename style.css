@@ -1,0 +1,15 @@
+body html{
+margin: 0px;
+padding: 0px;
+}
+
+#my-canvas{
+    background-color: rgb(19, 13, 41);
+}
+
+.canvas-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
