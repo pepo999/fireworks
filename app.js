@@ -26,10 +26,10 @@ function start() {
 
 start()
 
-let darkenUnit = 0.03;
+let darkenUnit = 0.06;
 
-for (let i = 0; i < 200; i++) {
-    const newFirework = Firework.generateRandom(myCanvas.width, myCanvas.height);
+for (let i = 0; i <100 + (Math.random()*700); i++) {
+    const newFirework = Firework.generateRandom(myCanvas.width, myCanvas.height, originFirework.heightOfExplosion, originFirework.color);
     fireworksArr.push(newFirework);
     const heightOfExplosion = newFirework.heightOfExplosion;
     console.log(heightOfExplosion)
@@ -41,17 +41,22 @@ function explosion() {
             const firework = fireworksArr[i];
             firework.drawXplosion(ctx);
             firework.changePosition();
-        //    firework.speed -= (firework.speed / 6000);
-            if (ctx.globalAlpha < 0.05 * Math.random() || firework.alpha <= 0) {
-                ctx.globalAlpha = 1;
-                darkenUnit = darkenUnit + 0.00005;
+        //    firework.speed -= (firework.speed / (2000 + (Math.random() * 1000)));
+            if (ctx.globalAlpha < 0.05 * Math.random() || firework.alpha <= 0.1) {
+            //     ctx.globalAlpha = 1;
+            //     darkenUnit = darkenUnit + 0.00001;
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0,0,myCanvas.width, myCanvas.height)
                 return;
             }
-            // console.log(firework.alpha)
-            // console.log(ctx.globalAlpha)
+            
+                ctx.globalAlpha = 1;
+                darkenUnit = darkenUnit + 0.00008;
+            
+           
         }
     }, 10);
-    darkenUnit = 0.03;
+    darkenUnit = 0.06;
 }
 
 function darken1() {
