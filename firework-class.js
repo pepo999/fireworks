@@ -54,10 +54,11 @@ class Firework {
     }
 
     changePosition() {
-        ctx.globalAlpha -= (Math.random() * 10) /1000000;
-        this.alpha -= 0.0005;
-        this.x += this.speed + this.direction - ((Math.random() - Math.random())/10);
-        this.y += this.speed - this.direction - ((Math.random() - Math.random())/10);
+
+        ctx.globalAlpha -= (Math.random() * 10) /20;
+        this.alpha -= 0.0001;
+        this.x += this.speed + this.direction - ((Math.random() - Math.random())*0.25);
+        this.y += this.speed - this.direction - ((Math.random() - Math.random())*0.25);
     }
 
     static generateRandomStart(canvasWidth, canvasHeight) {

@@ -14,9 +14,9 @@ function start() {
         // console.log(originFirework.changePositionStart(), xplosionX)
         if (originFirework.y <= originFirework.heightOfExplosion) {
             explosion(fireworksArr);
-            setTimeout(() => {
-                explosion(fireworksArr2);
-            }, 10);
+            // setTimeout(() => {
+            //     explosion(fireworksArr2);
+            // }, 10);
             originFirework.color = 'black';
            
         }
@@ -45,11 +45,14 @@ function explosion(arr) {
             const firework = arr[i];
             firework.drawXplosion(ctx);
             firework.changePosition();
+            // firework.speed -= (Math.random() - Math.random())/5000;
+            // firework.direction -= (Math.random() - Math.random()) / 5000;
             //    firework.speed -= (firework.speed / (2000 + (Math.random() * 1000)));
-            if (ctx.globalAlpha < 0.05 * Math.random() || firework.alpha <= 0.1) {
-                ctx.fillStyle = 'black';
+            if (ctx.globalAlpha < 0.05 * Math.random() || firework.alpha <= 0.4) {
+                setInterval(() => {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.01)';
                 ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
-                return;
+                }, 10);
             }
             ctx.globalAlpha = 1;
             darkenUnit = darkenUnit + 0.00008;
@@ -66,7 +69,7 @@ function darken1() {
 }
 
 function darken() {
-    ctx.fillStyle = `rgba(0, 0, 0, ${darkenUnit})`;
+    ctx.fillStyle = `rgba(0, 0, 0, ${darkenUnit * 2})`;
     ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
     window.requestAnimationFrame(darken);
 }
