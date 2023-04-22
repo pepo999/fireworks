@@ -2,7 +2,8 @@ const myCanvas = document.getElementById('my-canvas');
 const ctx = myCanvas.getContext('2d');
 
 let fireworksArr = []
-
+let xplosionX = 0;
+let xplosionY = 0;
 const originFirework = Firework.generateRandomStart(myCanvas.width, myCanvas.height);
 console.log(originFirework)
 
@@ -10,12 +11,15 @@ function start() {
     setInterval(() => {
         originFirework.draw(ctx)
         originFirework.changePositionStart();
+    
+        let xplosionX = originFirework.x;
+        let xplosionY = originFirework.y;
+        // console.log(originFirework.changePositionStart(), xplosionX)
         if (originFirework.y <= originFirework.heightOfExplosion) {
-            explosion(originFirework.x, originFirework.y);
+            explosion();
             originFirework.color = 'black';
-            console.log('BOOOOOM')
-            return;
         }
+        
     }, 10);
 
 }
@@ -27,21 +31,24 @@ let darkenUnit = 0.03;
 for (let i = 0; i < 200; i++) {
     const newFirework = Firework.generateRandom(myCanvas.width, myCanvas.height);
     fireworksArr.push(newFirework);
+    const heightOfExplosion = newFirework.heightOfExplosion;
+    console.log(heightOfExplosion)
 }
 
-function explosion(x, y) {
+function explosion() {
     setInterval(() => {
         for (let i = 0; i < fireworksArr.length; i++) {
             const firework = fireworksArr[i];
             firework.drawXplosion(ctx);
             firework.changePosition();
+        //    firework.speed -= (firework.speed / 6000);
             if (ctx.globalAlpha < 0.05 * Math.random() || firework.alpha <= 0) {
                 ctx.globalAlpha = 1;
                 darkenUnit = darkenUnit + 0.00005;
                 return;
             }
             // console.log(firework.alpha)
-            console.log(ctx.globalAlpha)
+            // console.log(ctx.globalAlpha)
         }
     }, 10);
     darkenUnit = 0.03;
