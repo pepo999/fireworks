@@ -3,57 +3,58 @@ const ctx = myCanvas.getContext('2d');
 
 let fireworksArr = []
 
-let darkenUnit = 0.03;
+const originFirework = Firework.generateRandomStart(myCanvas.width, myCanvas.height);
+console.log(originFirework)
 
-for (let i = 0; i < 100; i++) {
-    const newFirework = Firework.generateRandom(myCanvas.width, myCanvas.height);
-   fireworksArr.push(newFirework);
-}
-
-console.log(fireworksArr)
-
-// function step() {
-// for (let i = 0; i < fireworksArr.length; i++) {
-//     const firework = fireworksArr[i];
-//     firework.draw(ctx);
-//     firework.changePosition();
-//     if(firework.isExploded()) {
-//         return;
-//     }
-//     window.requestAnimationFrame(step);
-// }
-// window.requestAnimationFrame(step);
-
-// }
-
-// step()
-
-function explosion (x, y) {
-setInterval(() => {
-    for (let i = 0; i < fireworksArr.length; i++) {
-        const firework = fireworksArr[i];
-        firework.draw(ctx);
-        firework.changePosition();
-        if(ctx.globalAlpha < 0.05 || firework.alpha <= 0) {
-            ctx.globalAlpha = 1;
-            darkenUnit = darkenUnit + 0.0001;
+function start() {
+    setInterval(() => {
+        originFirework.draw(ctx)
+        originFirework.changePositionStart();
+        if (originFirework.y <= originFirework.heightOfExplosion) {
+            explosion(originFirework.x, originFirework.y);
+            originFirework.color = 'black';
+            console.log('BOOOOOM')
             return;
         }
-        // console.log(firework.alpha)
-        console.log(ctx.globalAlpha)
-    }
-}, 10);
-darkenUnit = 0.03;
+    }, 10);
+
 }
 
-function darken1(){
-setInterval(() => {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
-    ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
-}, 10);
+start()
+
+let darkenUnit = 0.03;
+
+for (let i = 0; i < 200; i++) {
+    const newFirework = Firework.generateRandom(myCanvas.width, myCanvas.height);
+    fireworksArr.push(newFirework);
 }
 
-explosion()
+function explosion(x, y) {
+    setInterval(() => {
+        for (let i = 0; i < fireworksArr.length; i++) {
+            const firework = fireworksArr[i];
+            firework.drawXplosion(ctx);
+            firework.changePosition();
+            if (ctx.globalAlpha < 0.05 * Math.random() || firework.alpha <= 0) {
+                ctx.globalAlpha = 1;
+                darkenUnit = darkenUnit + 0.00005;
+                return;
+            }
+            // console.log(firework.alpha)
+            console.log(ctx.globalAlpha)
+        }
+    }, 10);
+    darkenUnit = 0.03;
+}
+
+function darken1() {
+    setInterval(() => {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.06)";
+        ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
+    }, 10);
+}
+
+// explosion()
 
 
 function darken() {
