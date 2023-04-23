@@ -13,7 +13,7 @@ class Firework {
 
     static generateRandom(canvasWidth, canvasHeight, height, colorTaken) {
 
-        const heightOfExplosion = (canvasHeight / 1.618) - 100 - ((Math.random() - Math.random()) * 200);
+        const heightOfExplosion = (canvasWidth / 1.618) - 100 - ((Math.random() - Math.random()) * 200);
 
         const x = originFirework.x;
         const y = height;
@@ -61,9 +61,9 @@ class Firework {
         // const y = canvasHeight;
 
         const x = (Math.random() * canvasWidth);
-        const y = canvasHeight;
+        const y = canvasWidth;
 
-        const heightOfExplosion = (canvasHeight / 1.618) - 100 - ((Math.random() - Math.random()) * 200);
+        const heightOfExplosion = (canvasWidth / 1.618) - 100 - ((Math.random() - Math.random()) * 200);
 
         const red = Math.ceil(Math.random() * 255);
         const green = Math.ceil(Math.random() * 190);
