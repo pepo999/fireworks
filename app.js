@@ -14,32 +14,32 @@ function start() {
         // console.log(originFirework.changePositionStart(), xplosionX)
         if (originFirework.y <= originFirework.heightOfExplosion) {
             explosion(fireworksArr);
-            // setTimeout(() => {
-            //     explosion(fireworksArr2);
-            // }, 10);
+
+            explosion(fireworksArr2);
+
             originFirework.color = 'black';
-           
+
         }
     }, 10);
-
 }
 
 start()
 
 let darkenUnit = 0.06;
 
-for (let i = 0; i < 100 + (Math.random() * 700); i++) {
+for (let i = 0; i < (Math.random() * 5000); i++) {
     const newFirework = Firework.generateRandom(myCanvas.width, myCanvas.height, originFirework.heightOfExplosion, originFirework.color);
     fireworksArr.push(newFirework);
 }
 
-for (let i = 0; i < 100 + (Math.random() * 900); i++) {
+for (let i = 0; i < (Math.random() * 1000); i++) {
     const newFirework = Firework.generateRandom(myCanvas.width, myCanvas.height, originFirework.heightOfExplosion, originFirework.color);
     fireworksArr2.push(newFirework);
 }
 
 
 function explosion(arr) {
+
     setInterval(() => {
         for (let i = 0; i < arr.length; i++) {
             const firework = arr[i];
@@ -48,12 +48,13 @@ function explosion(arr) {
             // firework.speed -= (Math.random() - Math.random())/5000;
             // firework.direction -= (Math.random() - Math.random()) / 5000;
             //    firework.speed -= (firework.speed / (2000 + (Math.random() * 1000)));
-            if (ctx.globalAlpha < 0.05 * Math.random() || firework.alpha <= 0.4) {
+            if (ctx.globalAlpha < 0.05 * Math.random() || firework.alpha <= 0.55) {
                 ctx.fillStyle = "rgba(0, 0, 0, 1)";
                 ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
+
             }
             ctx.globalAlpha = 1;
-            darkenUnit = darkenUnit + 0.00008;
+            darkenUnit = darkenUnit + 0.00002;
         }
     }, 10);
     darkenUnit = 0.06;
@@ -67,7 +68,7 @@ function explosion(arr) {
 // }
 
 function darken() {
-    ctx.fillStyle = `rgba(0, 0, 0, ${darkenUnit * 1})`;
+    ctx.fillStyle = `rgba(0, 0, 0, ${darkenUnit * 1.3})`;
     ctx.fillRect(0, 0, myCanvas.width, myCanvas.height)
     window.requestAnimationFrame(darken);
 }

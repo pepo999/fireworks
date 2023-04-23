@@ -18,7 +18,7 @@ class Firework {
 
 
         const heightOfExplosion = (canvasHeight / 1.618) - 100 - ((Math.random() - Math.random()) * 200);
-        
+
         const x = originFirework.x;
         const y = height;
 
@@ -55,10 +55,10 @@ class Firework {
 
     changePosition() {
 
-        ctx.globalAlpha -= (Math.random() * 10) /20;
+        ctx.globalAlpha -= (Math.random() * 10) / 20;
         this.alpha -= 0.0001;
-        this.x += this.speed + this.direction - ((Math.random() - Math.random())*0.25);
-        this.y += this.speed - this.direction - ((Math.random() - Math.random())*0.25);
+        this.x += this.speed + this.direction - ((Math.random() - Math.random()) * 0.25);
+        this.y += this.speed - this.direction - ((Math.random() - Math.random()) * 0.25);
     }
 
     static generateRandomStart(canvasWidth, canvasHeight) {
@@ -66,7 +66,7 @@ class Firework {
         // const x = canvasWidth / 2 + ((Math.random() - Math.random()) * canvasWidth / 3);
         // const y = canvasHeight;
 
-        const x = (Math.random() * canvasWidth );
+        const x = (Math.random() * canvasWidth);
         const y = canvasHeight;
 
         const heightOfExplosion = (canvasHeight / 1.618) - 100 - ((Math.random() - Math.random()) * 200);
@@ -74,8 +74,6 @@ class Firework {
         const red = Math.ceil(Math.random() * 255);
         const green = Math.ceil(Math.random() * 190);
         const blue = Math.ceil(Math.random() * 255);
-
-
 
         const alpha = 1;
 
@@ -101,9 +99,9 @@ class Firework {
     }
 
     changePositionStart() {
-        ctx.globalAlpha -= (Math.random() * 10) /1000000;
+        ctx.globalAlpha -= (Math.random() * 10) / 1000000;
         this.alpha -= 0.0005;
-        this.x += (Math.random() - Math.random())/2;
+        this.x += (Math.random() - Math.random()) / 2;
         this.y -= this.speed * 20;
 
     }
