@@ -17,8 +17,6 @@ function launch() {
             }
         }
     }, 10);
-
-
 }
 
 let darkenUnit = 0.06;
