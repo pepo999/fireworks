@@ -13,11 +13,11 @@ function launch() {
         newFirework.changePositionStart();
         if (newFirework.y <= newFirework.yOfExplosion) {
             // newFirework.color = 'rgba(8, 2, 22, 1)';
-            newFirework.color = 'rgba(8,2,25,1)';
+            newFirework.color = 'rgba(8,2,40,1)';
             const particles = newFirework.particles;
             explosion(particles)
             if (newFirework.alpha <= 0) {
-                newFirework.color = 'rgba(4,2,20,1)'
+                newFirework.color = 'rgba(8,2,40,1)'
                 return;
             }
         }
