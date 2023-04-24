@@ -24,7 +24,7 @@ body{
 }
 
 #my-canvas{
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(8, 2, 22, 1);
     width: 100vw;
     height: 100vw;
     max-width: 600px;
