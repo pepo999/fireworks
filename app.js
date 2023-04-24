@@ -13,7 +13,7 @@ function launch() {
         newFirework.changePositionStart();
         if (newFirework.y <= newFirework.yOfExplosion) {
             // newFirework.color = 'rgba(8, 2, 22, 1)';
-            newFirework.color = 'rgba(4,2,20,1)';
+            newFirework.color = 'rgba(8,2,25,1)';
             const particles = newFirework.particles;
             explosion(particles)
             if (newFirework.alpha <= 0) {
@@ -80,13 +80,13 @@ function launch() {
 let darkenUnit = 0.06;
 
 function darken() {
-    ctx.fillStyle = `rgba(4,2,20,${darkenUnit * 4})`  
+    ctx.fillStyle = `rgba(8,2,40,${darkenUnit * 4})`  
     ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
     ctx.fillStyle = "rgba(251, 246, 155, 0.05)"
     ctx.beginPath()
     ctx.arc(480, 135, 20, 0, Math.PI *2)
     ctx.fill()
-    ctx.fillStyle = 'rgba(3, 0, 2, 1)';
+    ctx.fillStyle = 'rgba(6, 5, 7, 1)';
     ctx.fillRect(0, myCanvas.height - 160, 20, 160);
     ctx.fillRect(50, myCanvas.height - 110, 40, 110);
     ctx.fillRect(20, myCanvas.height - 90, 50, 90);
@@ -120,7 +120,7 @@ function darken() {
     ctx.beginPath();
     ctx.arc(222.5, 320, 10, Math.PI, Math.PI * 2)
     ctx.fill()
-    ctx.fillStyle = 'rgba(6, 5, 7, 1)';
+    ctx.fillStyle = 'rgba(3, 0, 2, 1)';
     ctx.fillRect(510, myCanvas.height -170, 5, 150)
     ctx.fillRect(519, myCanvas.height -175, 5, 150)
     ctx.fillRect(70, myCanvas.height -50, 50, 50);

@@ -16,14 +16,16 @@ body html{
     }
     
     #my-canvas{
+        margin-top: 0px;
         background-color: rgb(0, 0, 0);
         width: 100vw;
         height: 100vw;
         margin: 0px;
-    
+        margin-top: 0px;
     }
     
     .canvas-container{
+        margin-top: 0px;
         background-color: black;
         display: flex;
         flex-direction: column;
