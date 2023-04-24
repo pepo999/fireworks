@@ -1,6 +1,6 @@
 class Firework {
 
-    constructor(x, y, color, yOfExplosion, speed, direction, particles = [], alpha) {
+    constructor(x, y, color, yOfExplosion, speed, direction, particles = [], alpha = 1) {
         this.x = x;
         this.y = y;
         this.yOfExplosion = yOfExplosion;
@@ -20,9 +20,7 @@ class Firework {
         const green = Math.floor(Math.random() * 255) + 100;
         const blue = Math.floor(Math.random() * 255) + 100;
 
-        let alpha = 1;
-
-        const color = `rgba(${red},${green},${blue},${alpha})`;
+        const color = `rgba(${red},${green},${blue},${1})`;
 
         const yOfExplosion = (canvasWidth / 1.618) - 100 - ((Math.random() - Math.random()) * 200);
 
@@ -33,43 +31,43 @@ class Firework {
         const particles = [];
 
         for (let i = 0; i < 10 + (Math.random() * 3000); i++) {
-  
+
             const newSpeed = ((Math.random() * 0.1) - 0.05);
 
             const newDirection = (Math.random() * 0.1) - 0.05;
 
-            const particle = new Firework(x, yOfExplosion, color, yOfExplosion, newSpeed, newDirection, alpha)
+            const particle = new Firework(x, yOfExplosion, color, yOfExplosion, newSpeed, newDirection, this.alpha)
 
-           particles.push(particle)
+            particles.push(particle)
         }
 
-        const newFirework = new Firework(x, y, color, yOfExplosion, speed, direction, particles, alpha);
-
-        console.log(alpha)
+        const newFirework = new Firework(x, y, color, yOfExplosion, speed, direction, particles, this.alpha);
 
         return newFirework;
-        }
+    }
 
-        drawStart(ctx) { 
-            ctx.fillStyle = this.color;
-            ctx.fillRect(this.x, this.y, 1, 1);
-        }
-    
-        changePositionStart() {
-            this.x += (Math.random() - Math.random()) / 2;
-            this.y -= this.speed * 20;
-        }
+    drawStart(ctx) {
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, 1, 1);
+    }
 
-        drawParticle(ctx) {
-            ctx.fillStyle = this.color;
-            ctx.fillRect(this.x, this.y, 1, 1);  
+    changePositionStart() {
+        this.x += (Math.random() - Math.random()) / 2;
+        this.y -= this.speed * 20;
+    }
+
+    drawParticle(ctx) {
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, 1, 1);
+    }
+
+    changePositionParticle() {
+        this.x += this.speed + this.direction - ((Math.random() - Math.random()) * 0.3);
+        this.y += this.speed - this.direction - ((Math.random() - Math.random()) * 0.3);
+        this.alpha -= 0.002 * Math.random();
+        if (this.alpha <= 0) {
+            return
         }
-    
-        changePositionParticle() {
-            this.x += this.speed + this.direction - ((Math.random() - Math.random()) * 0.3);
-            this.y += this.speed - this.direction - ((Math.random() - Math.random()) * 0.3);
-            // this.alpha -=  0.001;
-            // console.log(this.alpha)    
-        }
+    }
 
 }

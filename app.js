@@ -11,6 +11,10 @@ function launch() {
             newFirework.color = 'black';
             const particles = newFirework.particles;
             explosion(particles)
+            if (newFirework.alpha <= 0) {
+                newFirework.color = 'black'
+                return;
+            }
         }
     }, 10);
 
@@ -34,9 +38,12 @@ function explosion(arr) {
             const firework = arr[i];
             firework.drawParticle(ctx);
             firework.changePositionParticle();
-            firework.alpha -= 0.001;
-            console.log(firework.alpha)
-            ctx.globalAlpha = 1;
+            if (firework.alpha <= 0) {
+                firework.color = 'black'
+                return;
+            }
+            // console.log(firework.alpha)
+            // ctx.globalAlpha = 1;
             darkenUnit = darkenUnit + 0.00002;
         }
     darkenUnit = 0.06;
