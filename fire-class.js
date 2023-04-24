@@ -14,7 +14,8 @@ class Firework {
     static generateRandomStart(canvasWidth, canvasHeight) {
 
         const x = (Math.random() * canvasWidth);
-        const y = canvasHeight;
+        // const y = canvasHeight;
+        const y = canvasHeight - 100;
 
         const red = Math.floor(Math.random() * 255) + 100;
         const green = Math.floor(Math.random() * 255) + 100;
