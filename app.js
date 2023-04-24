@@ -2,6 +2,8 @@ const myCanvas = document.getElementById('my-canvas');
 
 const ctx = myCanvas.getContext('2d');
 
+let grd;
+
 function launch() {
     const newFirework = Firework.generateRandomStart(myCanvas.width, myCanvas.height);
     setInterval(() => {
@@ -23,8 +25,13 @@ function launch() {
 let darkenUnit = 0.06;
 
 function darken() {
-    ctx.fillStyle = `rgba(8, 2, 18, ${darkenUnit * 3})`;
+    ctx.fillStyle = `rgba(4,2,20,${darkenUnit * 4})`
+   
     ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
+    ctx.fillStyle = "rgba(251, 246, 155, 0.05)"
+    ctx.beginPath()
+    ctx.arc(480, 135, 20, 0, Math.PI *2)
+    ctx.fill()
     ctx.fillStyle = 'rgba(3, 0, 2, 1)';
     ctx.fillRect(0, myCanvas.height - 160, 20, 160);
     ctx.fillRect(50, myCanvas.height - 110, 40, 110);
