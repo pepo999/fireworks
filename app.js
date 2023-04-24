@@ -4,8 +4,6 @@ const ctx = myCanvas.getContext('2d');
 
 function launch() {
     const newFirework = Firework.generateRandomStart(myCanvas.width, myCanvas.height);
-    console.log(newFirework)
-    console.log(newFirework.particles)
     setInterval(() => {
         newFirework.drawStart(ctx);
         newFirework.changePositionStart();
@@ -36,6 +34,8 @@ function explosion(arr) {
             const firework = arr[i];
             firework.drawParticle(ctx);
             firework.changePositionParticle();
+            firework.alpha -= 0.001;
+            console.log(firework.alpha)
             ctx.globalAlpha = 1;
             darkenUnit = darkenUnit + 0.00002;
         }
