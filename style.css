@@ -1,10 +1,10 @@
-body html{
+body, html{
 margin: 0px;
 padding: 0px;
 }
 
 html, body{
-    width: fit-content;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,16 +17,14 @@ html, body{
 } */
 
 body{
-    padding: 0px;
     margin: 0px;
-    width: fit-content;
-    height: fit-content;
+    width: 100vw;
+    height: 100vh;
 }
 
 #my-canvas{
+    margin-top: 50px;
     background-color: rgba(8, 2, 22, 1);
-    width: 100vw;
-    height: 100vw;
     max-width: 600px;
     max-height: 600px;
     margin: 0px;
