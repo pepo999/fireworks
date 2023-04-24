@@ -65,7 +65,7 @@ class Firework {
     changePositionParticle() {
         this.x += this.speed + this.direction - ((Math.random() - Math.random()) * 0.4);
         this.y += this.speed - this.direction - ((Math.random() - Math.random()) * 0.4);
-        this.alpha -= 0.0015 * (Math.random() * 2);
+        this.alpha -= 0.0005 * (Math.random() * 2 + Math.random() * 3 + Math.random());
         if (this.alpha <= 0) {
             return
         }
