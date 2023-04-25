@@ -64,7 +64,7 @@ function launch() {
     ctx.fillRect(100, myCanvas.width -120, 55, 120);
     ctx.fillRect(myCanvas.width -140, myCanvas.width -150, 90, 150);
     ctx.fillRect(myCanvas.width / 2, myCanvas.width -15, myCanvas.width/2, 15);
-    ctx.fillRect(0, myCanvas.width -10, myCanvas.width/2, 10);
+    ctx.fillRect(0, myCanvas.width -10, myCanvas.width/2, 10); 
 
         window.requestAnimationFrame(step)
       }
