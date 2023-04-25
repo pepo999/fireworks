@@ -9,11 +9,11 @@ function launch() {
         newFirework.changePositionStart();
 
         if (newFirework.y <= newFirework.yOfExplosion) {
-            newFirework.color = 'rgba(10,2,55,1)';
+            newFirework.color = 'rgba(12,2,65,0)';
             const particles = newFirework.particles;
             explosion(particles)
             if (newFirework.alpha <= 0) {
-                newFirework.color = 'rgba(10,2,55,1)'
+                newFirework.color = 'rgba(12,2,65,0)'
                 return;
             }
         }
