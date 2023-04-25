@@ -2,22 +2,17 @@ const myCanvas = document.getElementById('my-canvas');
 
 const ctx = myCanvas.getContext('2d');
 
-let grd;
-
 function launch() {
     const newFirework = Firework.generateRandomStart(myCanvas.width, myCanvas.height);
     function step() {
- 
-    // setInterval(() => {
         newFirework.drawStart(ctx);
         newFirework.changePositionStart();
         if (newFirework.y <= newFirework.yOfExplosion) {
-            // newFirework.color = 'rgba(8, 2, 22, 1)';
-            newFirework.color = 'rgba(8,2,40,1)';
+            newFirework.color = 'rgba(10,2,39,1)';
             const particles = newFirework.particles;
             explosion(particles)
             if (newFirework.alpha <= 0) {
-                newFirework.color = 'rgba(8,2,40,1)'
+                newFirework.color = 'rgba(10,2,39,1)'
                 return;
             }
         }
@@ -72,7 +67,6 @@ function launch() {
     ctx.fillRect(0, myCanvas.width -10, myCanvas.width/2, 10);
 
         window.requestAnimationFrame(step)
-    // }, 10);
       }
       window.requestAnimationFrame(step)
 }
@@ -80,13 +74,52 @@ function launch() {
 let darkenUnit = 0.06;
 
 function darken() {
-    ctx.fillStyle = `rgba(8,2,40,${darkenUnit * 4})`  
-    ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
+    ctx.fillStyle = `rgba(10,2,39,${darkenUnit * 4})`  
+    ctx.fillRect(0, 0, myCanvas.width, myCanvas.height); 
     ctx.fillStyle = "rgba(251, 246, 155, 0.05)"
+    ctx.beginPath()
+    ctx.arc(480, 135, 18, 0, Math.PI *2)
+    ctx.fill()
     ctx.beginPath()
     ctx.arc(480, 135, 20, 0, Math.PI *2)
     ctx.fill()
-    ctx.fillStyle = 'rgba(6, 5, 7, 1)';
+    ctx.beginPath()
+    ctx.arc(480, 135, 22, 0, Math.PI *2)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(480, 135, 24, 0, Math.PI *2)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(200, 170, 1, 0, Math.PI *2)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(478, 270, 1, 0, Math.PI *2)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(78, 240, 1, 0, Math.PI *2)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(360, 70, 1, 0, Math.PI *2)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(53, 83, 2, 0, Math.PI *2)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(300, 135, 2, 0, Math.PI *2)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(367, 160, 1, 0, Math.PI *2)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.arc(570, 90, 2, 0, Math.PI *2)
+    ctx.fill()
+    ctx.fillStyle = 'rgba(3, 0, 2, 1)';
+    ctx.beginPath();
+    ctx.moveTo(47, 491);
+    ctx.lineTo(70, 465);
+    ctx.lineTo(92, 491);
+    ctx.lineTo(48, 491);
+    ctx.fill();
     ctx.fillRect(0, myCanvas.height - 160, 20, 160);
     ctx.fillRect(50, myCanvas.height - 110, 40, 110);
     ctx.fillRect(20, myCanvas.height - 90, 50, 90);
@@ -120,7 +153,7 @@ function darken() {
     ctx.beginPath();
     ctx.arc(222.5, 320, 10, Math.PI, Math.PI * 2)
     ctx.fill()
-    ctx.fillStyle = 'rgba(3, 0, 2, 1)';
+    ctx.fillStyle = 'rgba(6, 5, 7, 1)';
     ctx.fillRect(510, myCanvas.height -170, 5, 150)
     ctx.fillRect(519, myCanvas.height -175, 5, 150)
     ctx.fillRect(70, myCanvas.height -50, 50, 50);
