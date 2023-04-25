@@ -4,12 +4,13 @@ body html{
     padding: 0px;
     }
     
-*{
+/* *{
     border: solid 2px rebeccapurple;
-}
+} */
 
     html{
         background-color: black;
+        box-sizing: border-box;
     }
     
     body{
