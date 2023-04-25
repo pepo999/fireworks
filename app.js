@@ -116,7 +116,7 @@ function darken() {
     ctx.fillStyle = 'rgba(3, 0, 2, 1)';
     ctx.beginPath();
     ctx.moveTo(47, 491);
-    ctx.lineTo(70, 465);
+    ctx.lineTo(70.5, 465);
     ctx.lineTo(92, 491);
     ctx.lineTo(48, 491);
     ctx.fill();
